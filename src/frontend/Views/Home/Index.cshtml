@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Hangfire Framework</h2>
+
+<div class="cards">
+    <a class="card long-task" asp-controller="tasks" asp-action="long">
+        <span class="card-title">Start Long Task</span>
+    </a>
+    
+    <a class="card repeating-task" asp-controller="tasks" asp-action="repeating">
+        <span class="card-title">Schedule Repeating Task</span>
+    </a>
+    
+    <a class="card dashboard" target="_blank" href="/dashboard">
+        <span class="card-title">View Dashboard</span>
+    </a>
+</div>

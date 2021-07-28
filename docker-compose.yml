@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  
+  frontend:
+    image: frontend
+    build:
+      context: ./src
+      dockerfile: frontend/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=development
+    ports:
+      - 5000:80
+    volumes:
+      - ./src/frontend:/src/app
+    depends_on:
+      - redis
+
+  worker1:
+    image: worker
+    build:
+      context: ./src
+      dockerfile: worker/Dockerfile
+    stdin_open: true
+    tty: true
+    environment:
+      - ASPNETCORE_ENVIRONMENT=development
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:4-alpine
+    volumes:
+      - ./redis-db:/data
